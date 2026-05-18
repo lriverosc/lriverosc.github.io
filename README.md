@@ -29,7 +29,7 @@ Los enlaces principales están definidos en `index.html`.
 - GitHub:
   Busca `https://github.com/lriverosc` y reemplázalo si es necesario.
 - LinkedIn:
-  Busca `https://www.linkedin.com/in/luis-riveros-b610bb219/` y reemplázalo si necesitas actualizar tu perfil real.
+  Busca `https://www.linkedin.com/in/luis-riveros-ai-engineer/` y reemplázalo si necesitas actualizar tu perfil real.
 - CV:
   El botón `Ver CV` apunta a `assets/cv-luis-riveros.pdf`. Si cambias el archivo, actualiza la ruta en el enlace correspondiente.
 
