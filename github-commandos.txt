@@ -1,0 +1,11 @@
+cd "C:\Users\Wolf360\Documents\portfolio-luis-riveros"
+git add -A
+git commit -m "Actualiza portafolio completo"
+git push origin main
+
+FORCE
+
+cd "C:\Users\Wolf360\Documents\portfolio-luis-riveros"
+git add -A
+git commit -m "Reemplaza portafolio completo"
+git push origin main --force-with-lease
