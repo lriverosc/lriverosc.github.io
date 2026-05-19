@@ -1,15 +1,15 @@
 :root {
-  --bg: #030504;
-  --bg-soft: #07110d;
-  --surface: rgba(10, 18, 14, 0.88);
-  --surface-strong: rgba(14, 24, 19, 0.96);
-  --border: rgba(93, 247, 162, 0.18);
-  --border-strong: rgba(93, 247, 162, 0.34);
-  --text: #f6faf7;
-  --muted: #b7c4bc;
-  --accent: #5df7a2;
-  --accent-strong: #24c977;
-  --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+  --bg: #040d2d;
+  --bg-soft: #0a1b4a;
+  --surface: rgba(8, 17, 47, 0.88);
+  --surface-strong: rgba(12, 26, 67, 0.96);
+  --border: rgba(85, 147, 255, 0.2);
+  --border-strong: rgba(145, 203, 255, 0.38);
+  --text: #f7fbff;
+  --muted: #aebede;
+  --accent: #4f96ff;
+  --accent-strong: #8dd5ff;
+  --shadow: 0 24px 60px rgba(0, 5, 20, 0.46);
   --radius: 24px;
   --radius-sm: 16px;
   --container: 1160px;
@@ -31,9 +31,9 @@ body {
   min-width: 320px;
   color: var(--text);
   background:
-    radial-gradient(circle at top right, rgba(93, 247, 162, 0.14), transparent 26%),
-    radial-gradient(circle at 10% 20%, rgba(36, 201, 119, 0.1), transparent 22%),
-    linear-gradient(180deg, #020302 0%, #050907 42%, #020302 100%);
+    radial-gradient(circle at top right, rgba(79, 150, 255, 0.2), transparent 28%),
+    radial-gradient(circle at 10% 18%, rgba(141, 213, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, #02081d 0%, #071230 42%, #03091d 100%);
   font-family: "Bahnschrift", "Segoe UI Variable", "Segoe UI", "Trebuchet MS", sans-serif;
   line-height: 1.6;
 }
@@ -62,8 +62,8 @@ a {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(93, 247, 162, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(93, 247, 162, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(79, 150, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 150, 255, 0.05) 1px, transparent 1px);
   background-size: 110px 110px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 90%);
   opacity: 0.34;
@@ -109,7 +109,7 @@ a {
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(18px);
-  background: rgba(2, 5, 3, 0.74);
+  background: rgba(3, 10, 29, 0.78);
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
@@ -124,26 +124,33 @@ a {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
-.brand-mark {
+.brand-logo {
+  width: clamp(120px, 12vw, 162px);
+  height: auto;
+  filter: drop-shadow(0 0 18px rgba(120, 180, 255, 0.28));
+}
+
+.brand-copy {
   display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--border-strong);
-  border-radius: 14px;
-  color: var(--accent);
-  background: rgba(93, 247, 162, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  gap: 0.12rem;
 }
 
 .brand-text {
   color: var(--text);
-  font-size: 0.98rem;
+  font-size: 1rem;
+  line-height: 1.05;
+}
+
+.brand-meta {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .site-nav {
@@ -192,7 +199,7 @@ a {
   padding: 0;
   border: 1px solid var(--border);
   border-radius: 14px;
-  background: rgba(93, 247, 162, 0.05);
+  background: rgba(79, 150, 255, 0.08);
   color: var(--text);
   cursor: pointer;
 }
@@ -226,7 +233,7 @@ a {
 .service-card,
 .github-panel,
 .contact-card {
-  background: linear-gradient(180deg, rgba(13, 22, 17, 0.92), rgba(7, 12, 10, 0.94));
+  background: linear-gradient(180deg, rgba(10, 21, 56, 0.92), rgba(6, 13, 34, 0.96));
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -251,7 +258,7 @@ a {
 .hero-description {
   max-width: 700px;
   margin: 1.45rem 0 0;
-  color: #dde7e1;
+  color: #dbe7ff;
   font-size: 1.05rem;
 }
 
@@ -296,7 +303,7 @@ a {
   opacity: 0;
   background:
     radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(255, 255, 255, 0.24), transparent 34%),
-    linear-gradient(135deg, rgba(93, 247, 162, 0.18), transparent 60%);
+    linear-gradient(135deg, rgba(79, 150, 255, 0.24), transparent 60%);
 }
 
 .button::after {
@@ -325,15 +332,15 @@ a {
 }
 
 .button-primary {
-  color: #021008;
-  background: linear-gradient(135deg, var(--accent), #aef7cf);
-  box-shadow: 0 12px 32px rgba(93, 247, 162, 0.18);
+  color: #04112f;
+  background: linear-gradient(135deg, #f7fbff, #8fd3ff 58%, var(--accent));
+  box-shadow: 0 14px 34px rgba(79, 150, 255, 0.26);
 }
 
 .button-secondary {
   color: var(--text);
   border-color: var(--border-strong);
-  background: rgba(93, 247, 162, 0.08);
+  background: rgba(79, 150, 255, 0.09);
 }
 
 .button-ghost {
@@ -371,7 +378,7 @@ a {
 .focus-list li {
   position: relative;
   padding-left: 1.2rem;
-  color: #d8e2dc;
+  color: #d7e3fb;
 }
 
 .focus-list li::before {
@@ -383,7 +390,7 @@ a {
   height: 0.45rem;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 0 14px rgba(93, 247, 162, 0.55);
+  box-shadow: 0 0 16px rgba(79, 150, 255, 0.6);
 }
 
 .hero-metrics {
@@ -419,7 +426,7 @@ a {
 .project-content p,
 .contact-card p {
   margin: 0;
-  color: #d6dfda;
+  color: #d6e2fb;
 }
 
 .skills-cloud {
@@ -436,7 +443,7 @@ a {
   border: 1px solid var(--border);
   border-radius: 999px;
   color: var(--text);
-  background: rgba(93, 247, 162, 0.06);
+  background: rgba(79, 150, 255, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   opacity: 0;
   transform: translateY(16px) scale(0.96);
@@ -450,7 +457,7 @@ a {
 .skills-cloud span:hover {
   transform: translateY(-2px);
   border-color: var(--border-strong);
-  background: rgba(93, 247, 162, 0.1);
+  background: rgba(79, 150, 255, 0.14);
 }
 
 .skills-cloud.is-visible span {
@@ -495,8 +502,8 @@ a {
 
 .project-card-featured {
   background:
-    radial-gradient(circle at top center, rgba(93, 247, 162, 0.12), transparent 45%),
-    linear-gradient(180deg, rgba(5, 10, 7, 0.96), rgba(3, 5, 4, 0.98));
+    radial-gradient(circle at top center, rgba(79, 150, 255, 0.16), transparent 45%),
+    linear-gradient(180deg, rgba(8, 18, 49, 0.96), rgba(4, 9, 25, 0.98));
 }
 
 .hero-copy::before,
@@ -528,7 +535,7 @@ a {
 .contact-card::before {
   inset: 0;
   opacity: 0;
-  background: radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(93, 247, 162, 0.14), transparent 36%);
+  background: radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(79, 150, 255, 0.16), transparent 36%);
 }
 
 .hero-copy::after,
@@ -543,7 +550,7 @@ a {
   top: 0;
   height: 1px;
   opacity: 0.45;
-  background: linear-gradient(90deg, transparent, rgba(93, 247, 162, 0.9), transparent);
+  background: linear-gradient(90deg, transparent, rgba(145, 203, 255, 0.92), transparent);
   transform: scaleX(0.35);
 }
 
@@ -619,8 +626,8 @@ a {
   object-position: center center;
   cursor: zoom-in;
   background:
-    linear-gradient(180deg, rgba(93, 247, 162, 0.05), rgba(93, 247, 162, 0)),
-    radial-gradient(circle at center, rgba(17, 30, 23, 0.92), rgba(3, 5, 4, 0.98));
+    linear-gradient(180deg, rgba(79, 150, 255, 0.08), rgba(79, 150, 255, 0)),
+    radial-gradient(circle at center, rgba(12, 24, 63, 0.92), rgba(3, 8, 24, 0.98));
 }
 
 .project-card-featured .project-media:focus-visible {
@@ -732,7 +739,7 @@ a {
 .video-lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(1, 3, 2, 0.82);
+  background: rgba(2, 8, 22, 0.84);
   backdrop-filter: blur(18px);
 }
 
@@ -745,13 +752,13 @@ a {
   display: grid;
   gap: 1rem;
   padding: 1.1rem;
-  border: 1px solid rgba(93, 247, 162, 0.24);
+  border: 1px solid rgba(85, 147, 255, 0.26);
   border-radius: 28px;
   overflow: auto;
   overscroll-behavior: contain;
   background:
-    radial-gradient(circle at top center, rgba(93, 247, 162, 0.12), transparent 34%),
-    linear-gradient(180deg, rgba(8, 14, 11, 0.96), rgba(3, 6, 4, 0.98));
+    radial-gradient(circle at top center, rgba(79, 150, 255, 0.14), transparent 34%),
+    linear-gradient(180deg, rgba(10, 21, 56, 0.96), rgba(4, 10, 29, 0.98));
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
 }
 
@@ -777,7 +784,7 @@ a {
 
 .video-lightbox-close,
 .video-control {
-  border: 1px solid rgba(93, 247, 162, 0.18);
+  border: 1px solid rgba(85, 147, 255, 0.22);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
@@ -798,8 +805,8 @@ a {
   border-radius: 22px;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(93, 247, 162, 0.05), rgba(93, 247, 162, 0)),
-    radial-gradient(circle at center, rgba(18, 32, 24, 0.94), rgba(2, 4, 3, 0.98));
+    linear-gradient(180deg, rgba(79, 150, 255, 0.08), rgba(79, 150, 255, 0)),
+    radial-gradient(circle at center, rgba(12, 24, 63, 0.94), rgba(2, 6, 21, 0.98));
 }
 
 .video-lightbox-player {
@@ -850,8 +857,8 @@ a {
 .video-control:hover,
 .video-control:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(93, 247, 162, 0.5);
-  background: rgba(93, 247, 162, 0.1);
+  border-color: rgba(145, 203, 255, 0.56);
+  background: rgba(79, 150, 255, 0.14);
 }
 
 .back-to-top {
@@ -863,7 +870,7 @@ a {
   height: 48px;
   border: 1px solid var(--border-strong);
   border-radius: 50%;
-  background: rgba(7, 17, 13, 0.92);
+  background: rgba(9, 21, 56, 0.92);
   color: var(--text);
   font-size: 1.2rem;
   cursor: pointer;
@@ -882,8 +889,8 @@ a {
 
 .back-to-top:hover,
 .back-to-top:focus-visible {
-  background: rgba(93, 247, 162, 0.12);
-  box-shadow: 0 0 0 6px rgba(93, 247, 162, 0.08), var(--shadow);
+  background: rgba(79, 150, 255, 0.14);
+  box-shadow: 0 0 0 6px rgba(79, 150, 255, 0.1), var(--shadow);
 }
 
 .reveal {
@@ -958,7 +965,7 @@ a {
     padding: 0.8rem;
     border: 1px solid var(--border);
     border-radius: 20px;
-    background: rgba(5, 10, 7, 0.96);
+    background: rgba(7, 16, 42, 0.97);
     box-shadow: var(--shadow);
     opacity: 0;
     pointer-events: none;
@@ -973,7 +980,7 @@ a {
 
   .site-nav a:hover,
   .site-nav a:focus-visible {
-    background: rgba(93, 247, 162, 0.08);
+    background: rgba(79, 150, 255, 0.12);
   }
 
   .site-nav a::after {
@@ -1000,6 +1007,23 @@ a {
 
   .hero {
     padding-top: 5.5rem;
+  }
+
+  .brand {
+    gap: 0.7rem;
+  }
+
+  .brand-logo {
+    width: 112px;
+  }
+
+  .brand-text {
+    font-size: 0.94rem;
+  }
+
+  .brand-meta {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
   }
 
   .hero-copy,
@@ -1048,6 +1072,22 @@ a {
 
   .hero-copy {
     padding: 1.35rem;
+  }
+
+  .brand-copy {
+    gap: 0.08rem;
+  }
+
+  .brand-logo {
+    width: 98px;
+  }
+
+  .brand-text {
+    font-size: 0.88rem;
+  }
+
+  .brand-meta {
+    font-size: 0.58rem;
   }
 
   .project-card-featured .project-media {
