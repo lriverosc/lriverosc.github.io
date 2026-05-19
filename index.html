@@ -141,8 +141,26 @@
         </div>
 
         <div class="projects-grid">
-          <article class="project-card reveal">
-            <img src="assets/trafficflow.png" alt="Vista del proyecto TrafficFlow AI para análisis de flujo vehicular" loading="lazy">
+          <article class="project-card project-card-featured reveal">
+            <video
+              class="project-media"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="assets/trafficflow.png"
+              data-lightbox-video
+              data-video-src="assets/trafficflow.mp4"
+              data-video-poster="assets/trafficflow.png"
+              tabindex="0"
+              role="button"
+              aria-controls="video-lightbox"
+              aria-haspopup="dialog"
+              aria-label="Demostración del proyecto TrafficFlow AI para análisis de flujo vehicular"
+            >
+              <source src="assets/trafficflow.mp4" type="video/mp4">
+            </video>
             <div class="project-content">
               <h3>TrafficFlow AI</h3>
               <p>
@@ -245,6 +263,37 @@
       <p>© 2026 Luis Riveros · Portafolio Profesional</p>
     </div>
   </footer>
+
+  <div class="video-lightbox" id="video-lightbox" aria-hidden="true">
+    <div class="video-lightbox-backdrop" data-lightbox-close></div>
+    <section class="video-lightbox-shell" role="dialog" aria-modal="true" aria-labelledby="video-lightbox-title">
+      <div class="video-lightbox-head">
+        <div>
+          <p class="video-lightbox-kicker">Vista ampliada</p>
+          <h3 id="video-lightbox-title">TrafficFlow AI</h3>
+        </div>
+        <button class="video-lightbox-close" type="button" aria-label="Cerrar vista ampliada" data-lightbox-close>×</button>
+      </div>
+
+      <div class="video-lightbox-stage">
+        <video class="video-lightbox-player" preload="metadata" playsinline poster="assets/trafficflow.png"></video>
+      </div>
+
+      <div class="video-lightbox-controls">
+        <div class="video-lightbox-actions">
+          <button class="video-control" type="button" data-video-action="play">Play</button>
+          <button class="video-control" type="button" data-video-action="pause">Pausa</button>
+          <button class="video-control" type="button" data-video-action="stop">Stop</button>
+        </div>
+
+        <div class="video-lightbox-timeline">
+          <span class="video-time" data-time-current>00:00</span>
+          <input class="video-progress" type="range" min="0" max="100" step="0.1" value="0" aria-label="Avance del video">
+          <span class="video-time" data-time-duration>00:00</span>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
 
