@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<defs>
+  <linearGradient id="accent" x1="180" y1="160" x2="840" y2="860" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#22D3EE"/>
+    <stop offset="100%" stop-color="#6366F1"/>
+  </linearGradient>
+</defs>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+<!-- camera body -->
+<path d="M218 330 H344 L392 266 H608 L656 330 H806 C850 330 884 364 884 408 V700 C884 744 850 778 806 778 H218 C174 778 140 744 140 700 V408 C140 364 174 330 218 330 Z"
+      stroke="#F8FAFC" stroke-width="34"/>
+<circle cx="472" cy="554" r="142" stroke="#F8FAFC" stroke-width="34"/>
+<!-- aperture accents -->
+<path d="M472 412 L548 514 L500 664" stroke="url(#accent)" stroke-width="30"/>
+<path d="M548 514 L674 534 L590 640" stroke="url(#accent)" stroke-width="30"/>
+<path d="M392 664 L500 664" stroke="url(#accent)" stroke-width="30"/>
+<!-- video play -->
+<path d="M716 466 L830 534 L716 602 Z" fill="url(#accent)" stroke="none"/>
+<circle cx="748" cy="386" r="18" fill="url(#accent)" stroke="none"/>
+
+</g>
+</svg>

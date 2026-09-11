@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("nc-theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio profesional de Luis Riveros, Ingeniero en Informática especializado en desarrollo de software, automatización y análisis técnico.">
-  <meta name="keywords" content="Luis Riveros, portafolio, ingeniero en informática, desarrollo de software, automatización, análisis de datos, tránsito">
+  <meta name="description" content="NeuralCore Software — Portafolio profesional de Luis Riveros, Ingeniero en Informática especializado en apps multiplataforma, automatización, visión por computadora e ingeniería de tránsito.">
+  <meta name="keywords" content="Luis Riveros, NeuralCore Software, portafolio, ingeniero en informática, desarrollo de software, automatización, visión por computadora, ingeniería de tránsito, Flutter, PySide6">
   <meta name="author" content="Luis Riveros">
   <meta name="theme-color" content="#07163d">
-  <title>Luis Riveros | Portafolio Profesional</title>
+  <title>Luis Riveros | NeuralCore Software</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,12 +27,31 @@
   <header class="site-header" id="top">
     <div class="container nav-shell">
       <a class="brand" href="#hero" aria-label="Ir al inicio">
-        <img class="brand-logo" src="assets/logo%20paradox.png" alt="Logo Paradox">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="8" r="3.6" fill="currentColor"/>
+            <circle cx="40" cy="24" r="3.6" fill="currentColor"/>
+            <circle cx="24" cy="40" r="3.6" fill="currentColor"/>
+            <circle cx="8" cy="24" r="3.6" fill="currentColor"/>
+            <circle cx="24" cy="24" r="6" fill="currentColor"/>
+            <path d="M24 13v5.6M35 24h-5.6M24 35v-5.6M13 24h5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
+          </svg>
+        </span>
         <span class="brand-copy">
           <span class="brand-text">Luis Riveros</span>
-          <span class="brand-meta">Paradox AI Software</span>
+          <span class="brand-meta">NeuralCore · Software</span>
         </span>
       </a>
+
+      <button class="theme-toggle" type="button" aria-label="Cambiar a modo claro" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/>
+        </svg>
+      </button>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
         <span></span>
@@ -43,18 +73,21 @@
     <section class="hero section" id="hero">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Portafolio Profesional</p>
-          <h1>Luis Riveros</h1>
-          <p class="hero-role">Ingeniero en Informática | Desarrollo de Software | Automatización | Análisis Técnico</p>
-          <p class="hero-description">
-            Desarrollo herramientas de software, automatización de procesos, análisis de datos y soluciones técnicas aplicadas a proyectos reales.
-          </p>
+          <img class="hero-photo" src="assets/icons/my_picture.png" alt="" aria-hidden="true">
+          <div class="hero-copy-text">
+            <p class="eyebrow">NeuralCore · Software</p>
+            <h1>Luis Riveros</h1>
+            <p class="hero-role">Ingeniero en Informática | Apps Multiplataforma | Automatización con IA | Ingeniería de Tránsito</p>
+            <p class="hero-description">
+              Diseño y construyo software de producción para terreno y gabinete: aplicaciones Android y de escritorio sincronizadas en red local, visión por computadora aplicada y herramientas de automatización documental para consultoría de ingeniería de tránsito.
+            </p>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="assets/cv-luis-riveros.pdf" target="_blank" rel="noopener noreferrer">Ver CV</a>
-            <a class="button button-secondary" href="https://github.com/lriverosc" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a class="button button-secondary" href="https://www.linkedin.com/in/luis-riveros-ai-engineer/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a class="button button-ghost" href="#contact">Contacto</a>
+            <div class="hero-actions">
+              <a class="button button-primary" href="assets/cv-luis-riveros.pdf" target="_blank" rel="noopener noreferrer">Ver CV</a>
+              <a class="button button-secondary" href="https://github.com/lriverosc" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="button button-secondary" href="https://www.linkedin.com/in/luis-riveros-ai-engineer/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a class="button button-ghost" href="#contact">Contacto</a>
+            </div>
           </div>
         </div>
 
@@ -62,26 +95,11 @@
           <div class="hero-panel-card">
             <p class="panel-label">Enfoque</p>
             <ul class="focus-list">
-              <li>Software aplicado a consultoría e ingeniería</li>
-              <li>Automatización y productividad técnica</li>
-              <li>Datos, reportes y procesamiento documental</li>
-              <li>Herramientas de escritorio robustas y editables</li>
+              <li>Apps Android + escritorio local-first, sin dependencia de Internet</li>
+              <li>Visión por computadora aplicada a terreno (YOLO, EfficientDet)</li>
+              <li>Automatización documental: DOCX, PDF, CSV, KMZ</li>
+              <li>Soluciones para ingeniería de tránsito y catastro vial</li>
             </ul>
-          </div>
-
-          <div class="hero-metrics">
-            <article class="metric-card">
-              <span class="metric-value">Desktop</span>
-              <span class="metric-label">Aplicaciones técnicas</span>
-            </article>
-            <article class="metric-card">
-              <span class="metric-value">Excel + Data</span>
-              <span class="metric-label">Procesamiento y reportes</span>
-            </article>
-            <article class="metric-card">
-              <span class="metric-value">Transit Tech</span>
-              <span class="metric-label">Soluciones para tránsito</span>
-            </article>
           </div>
         </aside>
       </div>
@@ -96,7 +114,7 @@
 
         <div class="about-card reveal">
           <p>
-            Soy Ingeniero en Informática con experiencia en desarrollo de aplicaciones de escritorio, automatización de procesos, análisis de datos y elaboración de reportes técnicos para proyectos reales. He trabajado en soluciones orientadas al procesamiento de archivos Excel, generación de herramientas para ingeniería de tránsito y construcción de sistemas personalizados para consultoría, con foco en productividad, trazabilidad y utilidad práctica.
+            Soy Ingeniero en Informática y fundador de <strong>NeuralCore Software</strong>. Desarrollo sistemas locales-first para terreno y gabinete —apps Android en Flutter sincronizadas por WiFi/LAN con aplicaciones de escritorio en PySide6, WPF/.NET y visión por computadora— aplicados a levantamientos IMIV, catastro semafórico, revisión normativa de tránsito y automatización documental. Mis proyectos se validan en campo real: cientos de registros GPS, cientos de fotografías georreferenciadas y exportaciones técnicas (DOCX, PDF, CSV, KMZ) usadas directamente por consultoras de ingeniería.
           </p>
         </div>
       </div>
@@ -111,27 +129,29 @@
 
         <div class="skills-cloud reveal" aria-label="Lista de habilidades técnicas">
           <span>Python</span>
-          <span>PySide6</span>
-          <span>Qt Designer</span>
-          <span>PHP</span>
-          <span>MySQL</span>
+          <span>PySide6 / PyQt5</span>
+          <span>Flutter / Dart</span>
+          <span>C# · .NET 8</span>
+          <span>WPF / MVVM</span>
           <span>SQLite</span>
+          <span>WebSocket</span>
           <span>HTML</span>
           <span>CSS</span>
           <span>JavaScript</span>
-          <span>Excel</span>
-          <span>openpyxl</span>
-          <span>pandas</span>
           <span>OpenCV</span>
           <span>YOLO</span>
+          <span>EfficientDet-Lite0</span>
+          <span>CameraX</span>
+          <span>MapLibre / OSM</span>
           <span>FFmpeg</span>
+          <span>yt-dlp</span>
           <span>Whisper</span>
+          <span>Inno Setup</span>
+          <span>PyInstaller</span>
           <span>Git</span>
           <span>GitHub</span>
-          <span>VS Code</span>
           <span>Windows</span>
           <span>Linux</span>
-          <span>WSL</span>
         </div>
       </div>
     </section>
@@ -139,50 +159,360 @@
     <section class="section" id="projects">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow">Proyectos destacados</p>
-          <h2>Proyectos activos y experiencia aplicada en software</h2>
+          <p class="eyebrow">Soluciones desarrolladas</p>
+          <h2>Software a medida, organizado por área de especialización</h2>
+          <p class="section-heading-note">Cada solución fue desarrollada a medida para un cliente o proyecto real. Si te interesa alguna para tu equipo, <a href="#contact">escríbeme directamente</a> y coordinamos una demo.</p>
         </div>
 
-        <div class="projects-grid">
-          <article class="project-card project-card-featured reveal">
-            <video
-              class="project-media"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              poster="assets/trafficflow.png"
-              data-lightbox-video
-              data-video-src="assets/trafficflow.mp4"
-              data-video-poster="assets/trafficflow.png"
-              tabindex="0"
-              role="button"
-              aria-controls="video-lightbox"
-              aria-haspopup="dialog"
-              aria-label="Demostración del proyecto TrafficFlow AI para análisis de flujo vehicular"
-            >
-              <source src="assets/trafficflow.mp4" type="video/mp4">
-            </video>
-            <div class="project-content">
-              <h3>TrafficFlow AI</h3>
-              <p>
-                Sistema de análisis de flujo vehicular mediante visión por computadora, orientado a mediciones de tránsito, clasificación vehicular y generación de reportes técnicos.
-              </p>
-              <p class="project-stack">Python · PySide6 · YOLO · OpenCV · Excel</p>
+        <div class="project-category">
+          <div class="category-heading reveal">
+            <span class="category-icon" aria-hidden="true">
+              <img class="icon-dark" src="assets/icons/portfolio_icons_lriverosc/dark_bg/svg/01_ingenieria_transito_semaforos.svg" alt="">
+              <img class="icon-light" src="assets/icons/portfolio_icons_lriverosc/light_bg/svg/01_ingenieria_transito_semaforos.svg" alt="">
+            </span>
+            <div class="category-heading-text">
+              <h3>Ingeniería de Tránsito y Semáforos</h3>
+              <p>Catastro, conteo vehicular, programación de semáforos y procesamiento de informes técnicos.</p>
             </div>
-          </article>
+          </div>
 
-          <article class="project-card reveal">
-            <img src="assets/github.png" alt="Visual del perfil y proyectos de GitHub de Luis Riveros" loading="lazy">
-            <div class="project-content">
-              <h3>GitHub Projects</h3>
-              <p>
-                Repositorio profesional para documentar proyectos, herramientas, pruebas técnicas y soluciones de desarrollo de software.
-              </p>
-              <p class="project-stack">Git · GitHub · README · Documentación</p>
+          <div class="projects-grid">
+            <article class="project-card project-card-featured reveal">
+              <video
+                class="project-media"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="assets/trafficflow.png"
+                data-lightbox-video
+                data-video-src="assets/trafficflow.mp4"
+                data-video-poster="assets/trafficflow.png"
+                tabindex="0"
+                role="button"
+                aria-controls="video-lightbox"
+                aria-haspopup="dialog"
+                aria-label="Demostración del proyecto TrafficFlow AI para análisis de flujo vehicular"
+              >
+                <source src="assets/trafficflow.mp4" type="video/mp4">
+              </video>
+              <div class="project-content">
+                <h3>TrafficFlow AI</h3>
+                <p>
+                  Analiza el flujo vehicular de forma automática: cuenta y clasifica vehículos por tipo, y entrega reportes técnicos listos para tus estudios de tránsito, sin conteo manual en terreno.
+                </p>
+                <div class="project-links">
+                  <span class="project-status">Disponible a medida — solicita una demo</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-showcase" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+                <span>GeoSignal</span>
+              </div>
+              <div class="project-content">
+                <h3>GeoSignal Catastro</h3>
+                <p>
+                  Digitaliza el levantamiento de catastros IMIV: tu equipo captura en terreno desde una app Android sin depender de Internet, y todo llega organizado a gabinete listo para exportar informes, bitácoras y planos georreferenciados.
+                </p>
+                <p class="project-highlight">181 registros y 621 puntos GPS levantados en terreno (proyecto El Milagro)</p>
+                <div class="project-links">
+                  <span class="project-status">Disponible a medida — solicita una demo</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-showcase" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+                <span>Revisor IMIV</span>
+              </div>
+              <div class="project-content">
+                <h3>Revisor IMIV</h3>
+                <p>
+                  Acelera la revisión de informes IMIV: automatiza los conteos de la pauta oficial y genera el consolidado de observaciones en Word y PDF, listo para enviar al revisor.
+                </p>
+                <p class="project-highlight">306 requisitos y 404 comprobaciones auditadas automáticamente</p>
+                <div class="project-links">
+                  <span class="project-status">Disponible a medida — solicita una demo</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-showcase" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/></svg>
+                <span>Ortomosaico</span>
+              </div>
+              <div class="project-content">
+                <h3>Ortomosaico Intellisence</h3>
+                <p>
+                  Limpia y corrige ortomosaicos para tus planos de ingeniería: borra objetos no deseados y ajusta el color y la luminosidad de forma automática, listos para usar en AutoCAD.
+                </p>
+                <p class="project-highlight">Detecta bordes y recorta automáticamente las zonas irregulares del mosaico</p>
+                <div class="project-links">
+                  <span class="project-status">Disponible a medida — solicita una demo</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="archive-grid">
+            <div class="archive-card reveal">
+              <h4>trafficlight-programmer</h4>
+              <p>Programación de fases y tiempos de semáforos.</p>
             </div>
-          </article>
+            <div class="archive-card reveal">
+              <h4>red-topologica</h4>
+              <p>Red topológica de corredores y offsets.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>counter-traffic-v2</h4>
+              <p>Contador de tránsito.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>app-android-signal-cycle</h4>
+              <p>App Android de ciclos de semáforos.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>pdf-inform-cutter</h4>
+              <p>Recorte de informes SIDRA en PDF.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>perqt-converter</h4>
+              <p>Conversor de datos operacionales de intersecciones.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>gpx-traza</h4>
+              <p>Analizador de trazas GPX.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>gpx_travel_analyzer</h4>
+              <p>Analizador de trazas OSM.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-category">
+          <div class="category-heading reveal">
+            <span class="category-icon" aria-hidden="true">
+              <img class="icon-dark" src="assets/icons/portfolio_icons_lriverosc/dark_bg/svg/02_fotografia_video.svg" alt="">
+              <img class="icon-light" src="assets/icons/portfolio_icons_lriverosc/light_bg/svg/02_fotografia_video.svg" alt="">
+            </span>
+            <div class="category-heading-text">
+              <h3>Fotografía y Video</h3>
+              <p>Herramientas para procesar, organizar y limpiar evidencia visual y video.</p>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card reveal">
+              <div class="project-showcase" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+                <span>Downloader</span>
+              </div>
+              <div class="project-content">
+                <h3>NeuralCore Downloader</h3>
+                <p>
+                  Descarga y convierte audio y video en un par de clics, con un instalador simple en español — sin instalar nada adicional ni configurar herramientas técnicas.
+                </p>
+                <p class="project-highlight">Instalación por usuario, sin administrador, compatible Windows 10/11 x64</p>
+                <div class="project-links">
+                  <span class="project-status">Disponible a medida — solicita una demo</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="archive-grid">
+            <div class="archive-card reveal">
+              <h4>enhacer-photo-eraser</h4>
+              <p>Borrado inteligente de objetos en fotos.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>photoorganizer</h4>
+              <p>Clasificador de evidencia fotográfica.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>fotocolas-manager</h4>
+              <p>Gestor de colas de fotos.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>fotos-drone-geo</h4>
+              <p>Ordenador de fotos de dron por geolocalización.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>frame-extractor-video</h4>
+              <p>Extractor de frames de video.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>backing-killer</h4>
+              <p>Separador de voces y pistas de audio en video.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>clasificay-movie-category</h4>
+              <p>Clasificador de películas por categoría.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-category">
+          <div class="category-heading reveal">
+            <span class="category-icon" aria-hidden="true">
+              <img class="icon-dark" src="assets/icons/portfolio_icons_lriverosc/dark_bg/svg/03_audio_ia.svg" alt="">
+              <img class="icon-light" src="assets/icons/portfolio_icons_lriverosc/light_bg/svg/03_audio_ia.svg" alt="">
+            </span>
+            <div class="category-heading-text">
+              <h3>Audio e IA</h3>
+              <p>Transcripción, separación de voz y asistentes con inteligencia artificial.</p>
+            </div>
+          </div>
+
+          <div class="archive-grid">
+            <div class="archive-card reveal">
+              <h4>py-audio-text</h4>
+              <p>Transcripción de audio a texto.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>auralis-studio</h4>
+              <p>App de karaoke con separación de voz.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>fractal-robot-assistant-ia</h4>
+              <p>Asistente IA con avatar fractal.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-category">
+          <div class="category-heading reveal">
+            <span class="category-icon" aria-hidden="true">
+              <img class="icon-dark" src="assets/icons/portfolio_icons_lriverosc/dark_bg/svg/04_apps_utilidades.svg" alt="">
+              <img class="icon-light" src="assets/icons/portfolio_icons_lriverosc/light_bg/svg/04_apps_utilidades.svg" alt="">
+            </span>
+            <div class="category-heading-text">
+              <h3>Apps y Utilidades</h3>
+              <p>Aplicaciones multiplataforma para gestión, utilidades de sistema y proyectos personales.</p>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card reveal">
+              <div class="project-showcase" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="16" rx="4"/><circle cx="12" cy="6" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r="1.2" fill="currentColor" stroke="none"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+                <span>Sintonía Fina</span>
+              </div>
+              <div class="project-content">
+                <h3>Sintonía Fina</h3>
+                <p>
+                  Mide automáticamente los ciclos de los semáforos en terreno usando la cámara de una tablet, y sincroniza cada proyecto con gabinete para acelerar tus estudios de sintonía semafórica.
+                </p>
+                <p class="project-highlight">Precisión validada: 100% de acierto detectando rojo, ámbar y verde sobre 666 muestras reales</p>
+                <div class="project-links">
+                  <span class="project-status">Disponible a medida — solicita una demo</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-showcase" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="12" rx="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/><line x1="2" y1="13" x2="22" y2="13"/><line x1="10" y1="13" x2="10" y2="16"/><line x1="14" y1="13" x2="14" y2="16"/></svg>
+                <span>Inventario</span>
+              </div>
+              <div class="project-content">
+                <h3>NeuralCore Inventario de Herramientas</h3>
+                <p>
+                  Controla el inventario de herramientas, quién las tiene y cuándo las devuelve, desde el computador o el celular — funciona aunque no haya internet y se sincroniza solo al reconectar.
+                </p>
+                <p class="project-highlight">Indicador de sincronización tipo semáforo y diagnóstico con historial de errores</p>
+                <div class="project-links">
+                  <span class="project-status">Disponible a medida — solicita una demo</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="archive-grid">
+            <div class="archive-card reveal">
+              <h4>arriendos-app</h4>
+              <p>App de gestión de arriendos (Flutter/Firebase).</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>Alien_Attack</h4>
+              <p>Juego 2D para Android en Flutter.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>ferreteria-app</h4>
+              <p>Proyecto de título — Ingeniería en Informática (AIEP).</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>Process_Detective2.0</h4>
+              <p>Detector de procesos ocultos en Windows.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>ascii-console</h4>
+              <p>Consola con efectos ASCII.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-category">
+          <div class="category-heading reveal">
+            <span class="category-icon" aria-hidden="true">
+              <img class="icon-dark" src="assets/icons/portfolio_icons_lriverosc/dark_bg/svg/05_ciencia_datos_aprendizaje.svg" alt="">
+              <img class="icon-light" src="assets/icons/portfolio_icons_lriverosc/light_bg/svg/05_ciencia_datos_aprendizaje.svg" alt="">
+            </span>
+            <div class="category-heading-text">
+              <h3>Ciencia de Datos y Aprendizaje</h3>
+              <p>Modelos, notebooks y ejercicios de práctica.</p>
+            </div>
+          </div>
+
+          <div class="archive-grid">
+            <div class="archive-card reveal">
+              <h4>Diabetes-Prediction</h4>
+              <p>Modelo de predicción de diabetes.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>Python3</h4>
+              <p>Ejercicios y práctica en Python.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-category">
+          <div class="category-heading reveal">
+            <span class="category-icon" aria-hidden="true">
+              <img class="icon-dark" src="assets/icons/portfolio_icons_lriverosc/dark_bg/svg/06_proyectos_antiguos.svg" alt="">
+              <img class="icon-light" src="assets/icons/portfolio_icons_lriverosc/light_bg/svg/06_proyectos_antiguos.svg" alt="">
+            </span>
+            <div class="category-heading-text">
+              <h3>Proyectos Antiguos</h3>
+              <p>Primeros proyectos académicos, conservados como registro de trayectoria.</p>
+            </div>
+          </div>
+
+          <div class="archive-grid">
+            <div class="archive-card reveal">
+              <h4>almacen</h4>
+              <p>Proyecto de almacén en Java con MySQL.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>proventas</h4>
+              <p>Sistema de ventas en C#.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>Trasefor</h4>
+              <p>Proyecto académico en Java.</p>
+            </div>
+            <div class="archive-card reveal">
+              <h4>boleteador_ApiRest</h4>
+              <p>API REST de boletería en PHP.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -241,7 +571,7 @@
 
   <footer class="site-footer">
     <div class="container footer-shell">
-      <p>© 2026 Luis Riveros · Portafolio Profesional</p>
+      <p>© 2026 NeuralCore Software · Luis Riveros · Portafolio Profesional</p>
     </div>
   </footer>
 

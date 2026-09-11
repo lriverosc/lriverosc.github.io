@@ -1,6 +1,6 @@
-# Portafolio Profesional de Luis Riveros
+# Portafolio Profesional de Luis Riveros — NeuralCore Software
 
-Sitio web estático de portafolio profesional creado en HTML, CSS y JavaScript puro. Está pensado para presentar el perfil de Luis Riveros, sus proyectos destacados, áreas de trabajo, enlaces profesionales y datos de contacto en un formato listo para GitHub Pages o publicación directa.
+Sitio web estático de portafolio profesional creado en HTML, CSS y JavaScript puro. Presenta el perfil de Luis Riveros bajo la marca **NeuralCore Software**: proyectos destacados (con descripciones extraídas de los README reales de cada aplicación), un archivo de otros repositorios de GitHub, habilidades técnicas, áreas de trabajo y datos de contacto, en un formato listo para GitHub Pages o publicación directa.
 
 ## Archivos del proyecto
 

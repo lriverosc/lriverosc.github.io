@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<defs>
+  <linearGradient id="accent" x1="180" y1="160" x2="840" y2="860" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#22D3EE"/>
+    <stop offset="100%" stop-color="#6366F1"/>
+  </linearGradient>
+</defs>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+<!-- globe -->
+<circle cx="512" cy="512" r="326" stroke="#0F172A" stroke-width="34"/>
+<path d="M186 512 H838 M512 186 C420 280 386 392 386 512 C386 632 420 744 512 838
+M512 186 C604 280 638 392 638 512 C638 632 604 744 512 838"
+      stroke="#0F172A" stroke-width="30"/>
+<path d="M254 330 C410 388 614 388 770 330 M254 694 C410 636 614 636 770 694"
+      stroke="#0F172A" stroke-width="28"/>
+<!-- code mark -->
+<path d="M412 468 L346 524 L412 580 M612 468 L678 524 L612 580"
+      stroke="url(#accent)" stroke-width="34"/>
+<path d="M550 438 L474 610" stroke="url(#accent)" stroke-width="32"/>
+
+</g>
+</svg>

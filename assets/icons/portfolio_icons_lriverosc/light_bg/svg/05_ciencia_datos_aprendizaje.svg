@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<defs>
+  <linearGradient id="accent" x1="180" y1="160" x2="840" y2="860" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#22D3EE"/>
+    <stop offset="100%" stop-color="#6366F1"/>
+  </linearGradient>
+</defs>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+<!-- database -->
+<ellipse cx="338" cy="292" rx="170" ry="78" stroke="#0F172A" stroke-width="34"/>
+<path d="M168 292 V610 C168 654 244 690 338 690 C432 690 508 654 508 610 V292"
+      stroke="#0F172A" stroke-width="34"/>
+<path d="M168 446 C168 490 244 526 338 526 C432 526 508 490 508 446"
+      stroke="#0F172A" stroke-width="30"/>
+<!-- analytics -->
+<path d="M580 718 V392 M580 718 H866" stroke="#0F172A" stroke-width="30"/>
+<path d="M620 642 L688 560 L752 590 L838 438" stroke="url(#accent)" stroke-width="34"/>
+<circle cx="620" cy="642" r="24" fill="url(#accent)" stroke="none"/>
+<circle cx="688" cy="560" r="24" fill="url(#accent)" stroke="none"/>
+<circle cx="752" cy="590" r="24" fill="url(#accent)" stroke="none"/>
+<circle cx="838" cy="438" r="24" fill="url(#accent)" stroke="none"/>
+<!-- learning/book -->
+<path d="M234 784 C298 748 366 748 430 784 V862 C366 826 298 826 234 862 Z"
+      stroke="url(#accent)" stroke-width="26"/>
+<path d="M430 784 C494 748 562 748 626 784 V862 C562 826 494 826 430 862 Z"
+      stroke="url(#accent)" stroke-width="26"/>
+
+</g>
+</svg>
