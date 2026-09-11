@@ -1,34 +1,3 @@
-const themeToggle = document.querySelector(".theme-toggle");
-const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-const applyThemeToggleState = (theme) => {
-  if (!themeToggle) {
-    return;
-  }
-
-  const isLight = theme === "light";
-  themeToggle.setAttribute("aria-pressed", String(isLight));
-  themeToggle.setAttribute("aria-label", isLight ? "Cambiar a modo oscuro" : "Cambiar a modo claro");
-
-  if (themeColorMeta) {
-    themeColorMeta.setAttribute("content", isLight ? "#f3f6fc" : "#07163d");
-  }
-};
-
-applyThemeToggleState(document.documentElement.getAttribute("data-theme") || "dark");
-
-themeToggle?.addEventListener("click", () => {
-  const nextTheme = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
-  document.documentElement.setAttribute("data-theme", nextTheme);
-  applyThemeToggleState(nextTheme);
-
-  try {
-    localStorage.setItem("nc-theme", nextTheme);
-  } catch (error) {
-    /* localStorage unavailable */
-  }
-});
-
 const initHeroPhotoParticles = () => {
   const sourceImg = document.querySelector("img.hero-photo");
 
@@ -65,10 +34,9 @@ const initHeroPhotoParticles = () => {
   let nameBounds = null;
   let namePoints = [];
 
-  const isLightTheme = () => document.documentElement.getAttribute("data-theme") === "light";
-  const currentThemeColor = () => (isLightTheme() ? "11, 23, 48" : "247, 251, 255");
-  const currentImageFilter = () => (isLightTheme() ? "grayscale(1) contrast(1.35) invert(1)" : "grayscale(1) contrast(1.15)");
-  const currentImageAlpha = () => (isLightTheme() ? 0.62 : 0.6);
+  const currentThemeColor = () => "247, 251, 255";
+  const currentImageFilter = () => "grayscale(1) contrast(1.15)";
+  const currentImageAlpha = () => 0.6;
 
   const buildParticles = () => {
     if (!sourceImage) {
@@ -267,7 +235,7 @@ const initHeroPhotoParticles = () => {
 
       particles.forEach((p) => {
         ctx.font = `${p.size}px "Courier New", monospace`;
-        const glyphColor = p.head && !isLightTheme() ? "255, 255, 255" : color;
+        const glyphColor = p.head ? "255, 255, 255" : color;
         ctx.fillStyle = `rgba(${glyphColor}, ${(p.alpha * p.drawAlpha * particleAlphaMult).toFixed(3)})`;
         ctx.fillText(p.char, p.x, p.y);
       });
@@ -424,7 +392,7 @@ const siteNav = document.querySelector(".site-nav");
 const navLinks = document.querySelectorAll(".site-nav a");
 const backToTopButton = document.querySelector(".back-to-top");
 const revealItems = document.querySelectorAll(".reveal");
-const animatedButtons = document.querySelectorAll(".button, .back-to-top, .theme-toggle");
+const animatedButtons = document.querySelectorAll(".button, .back-to-top");
 const heroButtons = document.querySelectorAll(".hero-actions .button");
 const spotlightItems = document.querySelectorAll(
   ".hero-copy, .hero-panel-card, .metric-card, .about-card, .project-card, .service-card, .contact-card, .button"
