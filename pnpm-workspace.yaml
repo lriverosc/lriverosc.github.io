@@ -1,0 +1,10 @@
+allowBuilds:
+  # None of these are needed for a static export build: sharp is only used by
+  # Next's image optimizer (disabled via images.unoptimized), @parcel/watcher
+  # is a dev-only file watcher, and unrs-resolver is an optional resolver for
+  # some ESLint plugins. Left as `false` so `pnpm install` doesn't have to run
+  # untrusted native postinstall scripts, and so CI's `--frozen-lockfile`
+  # install doesn't fail on unapproved builds.
+  '@parcel/watcher': false
+  sharp: false
+  unrs-resolver: false
