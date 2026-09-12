@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "name": "js",
+    "label": "Python",
+    "keyLabel": "Python",
+    "shortDescription": "Automatización, aplicaciones de escritorio y procesamiento de datos.",
+    "color": "#60a5fa",
+    "icon": "/assets/technologies/js.svg"
+  },
+  {
+    "id": 2,
+    "name": "ts",
+    "label": "PySide6 / PyQt5",
+    "keyLabel": "PySide6",
+    "shortDescription": "Interfaces de escritorio para herramientas de terreno y gabinete.",
+    "color": "#34d399",
+    "icon": "/assets/technologies/ts.svg"
+  },
+  {
+    "id": 3,
+    "name": "html",
+    "label": "Flutter / Dart",
+    "keyLabel": "Flutter",
+    "shortDescription": "Apps Android y aplicaciones multiplataforma con Dart.",
+    "color": "#38bdf8",
+    "icon": "/assets/technologies/html.svg"
+  },
+  {
+    "id": 4,
+    "name": "css",
+    "label": "C# · .NET 8",
+    "keyLabel": "C# .NET",
+    "shortDescription": "Desarrollo de software de escritorio con C# y .NET 8.",
+    "color": "#a78bfa",
+    "icon": "/assets/technologies/css.svg"
+  },
+  {
+    "id": 5,
+    "name": "react",
+    "label": "WPF / MVVM",
+    "keyLabel": "WPF",
+    "shortDescription": "Interfaces Windows organizadas con el patrón MVVM.",
+    "color": "#818cf8",
+    "icon": "/assets/technologies/react.svg"
+  },
+  {
+    "id": 6,
+    "name": "vue",
+    "label": "SQLite",
+    "keyLabel": "SQLite",
+    "shortDescription": "Almacenamiento local para aplicaciones que funcionan sin Internet.",
+    "color": "#22d3ee",
+    "icon": "/assets/technologies/vue.svg"
+  },
+  {
+    "id": 7,
+    "name": "nextjs",
+    "label": "WebSocket",
+    "keyLabel": "WebSocket",
+    "shortDescription": "Comunicación y sincronización de aplicaciones en red local.",
+    "color": "#60a5fa",
+    "icon": "/assets/technologies/nextjs.svg"
+  },
+  {
+    "id": 8,
+    "name": "tailwind",
+    "label": "HTML",
+    "keyLabel": "HTML",
+    "shortDescription": "Estructura semántica para interfaces web.",
+    "color": "#34d399",
+    "icon": "/assets/technologies/tailwind.svg"
+  },
+  {
+    "id": 9,
+    "name": "nodejs",
+    "label": "CSS",
+    "keyLabel": "CSS",
+    "shortDescription": "Diseño adaptable y presentación de interfaces.",
+    "color": "#38bdf8",
+    "icon": "/assets/technologies/nodejs.svg"
+  },
+  {
+    "id": 10,
+    "name": "express",
+    "label": "JavaScript",
+    "keyLabel": "JS",
+    "shortDescription": "Interactividad y lógica de aplicaciones web.",
+    "color": "#a78bfa",
+    "icon": "/assets/technologies/express.svg"
+  },
+  {
+    "id": 11,
+    "name": "postgres",
+    "label": "OpenCV",
+    "keyLabel": "OpenCV",
+    "shortDescription": "Procesamiento de imágenes y visión por computadora.",
+    "color": "#818cf8",
+    "icon": "/assets/technologies/postgres.svg"
+  },
+  {
+    "id": 12,
+    "name": "mongodb",
+    "label": "YOLO",
+    "keyLabel": "YOLO",
+    "shortDescription": "Detección y clasificación de objetos en imágenes y video.",
+    "color": "#22d3ee",
+    "icon": "/assets/technologies/mongodb.svg"
+  },
+  {
+    "id": 13,
+    "name": "git",
+    "label": "EfficientDet-Lite0",
+    "keyLabel": "Eff.Det",
+    "shortDescription": "Detección de objetos con modelos ligeros para dispositivos móviles.",
+    "color": "#60a5fa",
+    "icon": "/assets/technologies/git.svg"
+  },
+  {
+    "id": 14,
+    "name": "github",
+    "label": "CameraX",
+    "keyLabel": "CameraX",
+    "shortDescription": "Captura de imágenes y video en Android.",
+    "color": "#34d399",
+    "icon": "/assets/technologies/github.svg"
+  },
+  {
+    "id": 15,
+    "name": "prettier",
+    "label": "MapLibre / OSM",
+    "keyLabel": "MapLibre",
+    "shortDescription": "Mapas y datos geográficos para trabajo en terreno.",
+    "color": "#38bdf8",
+    "icon": "/assets/technologies/prettier.svg"
+  },
+  {
+    "id": 16,
+    "name": "npm",
+    "label": "FFmpeg",
+    "keyLabel": "FFmpeg",
+    "shortDescription": "Conversión y procesamiento de audio y video.",
+    "color": "#a78bfa",
+    "icon": "/assets/technologies/npm.svg"
+  },
+  {
+    "id": 17,
+    "name": "firebase",
+    "label": "yt-dlp",
+    "keyLabel": "yt-dlp",
+    "shortDescription": "Descarga de contenido multimedia en herramientas de escritorio.",
+    "color": "#818cf8",
+    "icon": "/assets/technologies/firebase.svg"
+  },
+  {
+    "id": 18,
+    "name": "wordpress",
+    "label": "Whisper",
+    "keyLabel": "Whisper",
+    "shortDescription": "Transcripción de audio mediante inteligencia artificial.",
+    "color": "#22d3ee",
+    "icon": "/assets/technologies/wordpress.svg"
+  },
+  {
+    "id": 19,
+    "name": "linux",
+    "label": "Inno Setup",
+    "keyLabel": "Inno",
+    "shortDescription": "Instaladores para distribuir aplicaciones Windows.",
+    "color": "#60a5fa",
+    "icon": "/assets/technologies/linux.svg"
+  },
+  {
+    "id": 20,
+    "name": "docker",
+    "label": "PyInstaller",
+    "keyLabel": "PyInstall",
+    "shortDescription": "Distribución de aplicaciones Python como ejecutables.",
+    "color": "#34d399",
+    "icon": "/assets/technologies/docker.svg"
+  },
+  {
+    "id": 21,
+    "name": "nginx",
+    "label": "Git",
+    "keyLabel": "Git",
+    "shortDescription": "Control de versiones y seguimiento de cambios.",
+    "color": "#38bdf8",
+    "icon": "/assets/technologies/nginx.svg"
+  },
+  {
+    "id": 22,
+    "name": "aws",
+    "label": "GitHub",
+    "keyLabel": "GitHub",
+    "shortDescription": "Repositorios y colaboración en proyectos de software.",
+    "color": "#a78bfa",
+    "icon": "/assets/technologies/aws.svg"
+  },
+  {
+    "id": 23,
+    "name": "vim",
+    "label": "Windows",
+    "keyLabel": "Windows",
+    "shortDescription": "Desarrollo y distribución de aplicaciones de escritorio.",
+    "color": "#818cf8",
+    "icon": "/assets/technologies/vim.svg"
+  },
+  {
+    "id": 24,
+    "name": "vercel",
+    "label": "Linux",
+    "keyLabel": "Linux",
+    "shortDescription": "Entorno de desarrollo y herramientas de automatización.",
+    "color": "#22d3ee",
+    "icon": "/assets/technologies/vercel.svg"
+  }
+]
