@@ -96,15 +96,20 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
       }
     });
     splineApp.addEventListener("mouseHover", handleMouseHover);
-    // "keyDown" only fires for a real physical keypress (see isInputFocused
-    // above); most visitors interact by clicking the keycap with the mouse
-    // instead, which Spline reports as "mouseDown". Hover already previews
-    // the skill's name/description, so a click just needs to jump to its
-    // project — that's the "pressing a key" most people will actually do.
-    splineApp.addEventListener("mouseDown", (e) => {
-      const skill = SKILLS[e.target.name as SkillNames];
-      if (skill) dispatchSkillProjectNavigate(findProjectBySkill(skill.name)?.id ?? null);
-    });
+  };
+
+  // "keyDown" only fires for a real physical keypress (see isInputFocused
+  // above) — most visitors instead click the keycap with the mouse, and this
+  // scene has no "Mouse Down" interaction authored on the keycaps for Spline
+  // to report (only hover and the physical key trigger exist), so
+  // splineApp.addEventListener("mouseDown", ...) never fires here. Hover
+  // already tracks which skill the pointer is over accurately (it drives the
+  // heading/desc preview), so a plain click on the canvas while hovering a
+  // keycap is what actually reaches this scene's "press" — jump to that
+  // skill's project.
+  const handleCanvasClick = () => {
+    const skill = selectedSkillRef.current;
+    if (skill) dispatchSkillProjectNavigate(findProjectBySkill(skill.name)?.id ?? null);
   };
 
   // --- Animation Setup Helpers ---
@@ -300,10 +305,13 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
   useEffect(() => {
     if (!splineApp) return;
     handleSplineInteractions();
+    const container = splineContainer.current;
+    container?.addEventListener("click", handleCanvasClick);
     const timelines = setupScrollAnimations();
     scanAnimationRef.current = getScanAnimation();
     keycapAnimationsRef.current = getKeycapsAnimation();
     return () => {
+      container?.removeEventListener("click", handleCanvasClick);
       scanAnimationRef.current?.stop()
       keycapAnimationsRef.current?.stop()
       // Kill the section ScrollTriggers so they don't orphan when the scene
