@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { categories } from "@/data/portfolio";
@@ -15,26 +15,25 @@ const projectAnchorId = (id: string) => `project-${id}`;
 
 export default function ProjectsSection() {
   const [openProjectId, setOpenProjectId] = useState<string | null>(null);
-  const highlightedRef = useRef<HTMLDivElement | null>(null);
   const lenis = useLenis();
 
-  // Pressing a key on the 3D keyboard dispatches this: scroll to (and briefly
-  // highlight) the project built with that technology, or just to the
-  // section header when a key has no single associated project.
+  // Pressing a key on the 3D keyboard dispatches this: jump to (scroll +
+  // open) the project built with that technology, like following a link, or
+  // just scroll to the section header when a key has no single associated
+  // project.
   useEffect(() => {
     const handleNavigate = (e: Event) => {
       const { projectId } = (e as CustomEvent<SkillProjectDetail>).detail;
       const target = document.getElementById(projectId ? projectAnchorId(projectId) : "projects");
       if (!target) return;
 
-      if (lenis) lenis.scrollTo(target, { offset: -96, duration: 1.4 });
+      if (lenis) lenis.scrollTo(target, { offset: -96, duration: 1.2 });
       else target.scrollIntoView({ behavior: "smooth", block: "center" });
 
-      highlightedRef.current?.classList.remove("ring-4", "ring-primary", "ring-offset-4", "ring-offset-background");
-      if (projectId && target instanceof HTMLDivElement) {
-        target.classList.add("ring-4", "ring-primary", "ring-offset-4", "ring-offset-background");
-        highlightedRef.current = target;
-        setTimeout(() => target.classList.remove("ring-4", "ring-primary", "ring-offset-4", "ring-offset-background"), 1800);
+      if (projectId) {
+        // Give the scroll a moment to land before the dialog pops in, so it
+        // doesn't jump the page underneath an already-open modal.
+        setTimeout(() => setOpenProjectId(projectId), 350);
       }
     };
     window.addEventListener(SKILL_PROJECT_EVENT, handleNavigate);

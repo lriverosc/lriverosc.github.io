@@ -96,6 +96,15 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
       }
     });
     splineApp.addEventListener("mouseHover", handleMouseHover);
+    // "keyDown" only fires for a real physical keypress (see isInputFocused
+    // above); most visitors interact by clicking the keycap with the mouse
+    // instead, which Spline reports as "mouseDown". Hover already previews
+    // the skill's name/description, so a click just needs to jump to its
+    // project — that's the "pressing a key" most people will actually do.
+    splineApp.addEventListener("mouseDown", (e) => {
+      const skill = SKILLS[e.target.name as SkillNames];
+      if (skill) dispatchSkillProjectNavigate(findProjectBySkill(skill.name)?.id ?? null);
+    });
   };
 
   // --- Animation Setup Helpers ---
