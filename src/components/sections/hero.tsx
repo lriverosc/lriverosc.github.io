@@ -7,6 +7,13 @@ import { BlurIn } from "../reveal-animations";
 import { config } from "@/data/config";
 import SectionWrapper from "../ui/section-wrapper";
 import ScrollDownIcon from "../scroll-down-icon";
+import { TypewriterText } from "../ui/typewriter-text";
+
+const HERO_TAGLINES = [
+  "Ingeniero en Informática",
+  "Fundador de NeuralCore Software",
+  "Automatización, IA y visión por computadora",
+];
 
 export default function HeroSection() {
   return <SectionWrapper id="hero" className="relative min-h-[100svh] w-full">
@@ -15,7 +22,7 @@ export default function HeroSection() {
         <BlurIn delay={0.3}>
           <p className="mb-5 text-xs font-medium uppercase tracking-[0.25em] text-primary">NeuralCore · Software / Chile</p>
           <h1 className="font-display text-[clamp(3.5rem,7vw,7rem)] font-bold leading-[1.05] tracking-tight">Luis<br />Riveros</h1>
-          <p className="mt-6 text-xl font-medium text-foreground">Ingeniero en Informática</p>
+          <p className="mt-6 min-h-[3.25rem] text-xl font-medium text-foreground sm:min-h-[1.75rem]"><TypewriterText phrases={HERO_TAGLINES} /></p>
           <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">Construyo software para terreno y gabinete. Apps multiplataforma, automatización con IA y visión por computadora aplicada a ingeniería de tránsito.</p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button asChild><Link href="/#projects">Ver proyectos <ArrowUpRight className="ml-2 size-4" /></Link></Button>
