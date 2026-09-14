@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 import { Skill, SkillNames, SKILLS } from "@/data/constants";
+import { findProjectBySkill } from "@/data/portfolio";
+import { dispatchSkillProjectNavigate } from "@/lib/skill-navigation";
 import { sleep } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePreloader } from "./preloader";
@@ -89,6 +91,8 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
         selectedSkillRef.current = skill;
         splineApp.setVariable("heading", skill.label);
         splineApp.setVariable("desc", skill.shortDescription);
+        // Pressing a key jumps to the project built with that technology.
+        dispatchSkillProjectNavigate(findProjectBySkill(skill.name)?.id ?? null);
       }
     });
     splineApp.addEventListener("mouseHover", handleMouseHover);

@@ -1,4 +1,29 @@
-export const categories = [
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  highlight: string;
+  image: string;
+  video: string;
+  /** Names of SKILLS (see src/data/keyboard.json) used by this project — drives
+   * the 3D keyboard's "press a key, jump to the project that uses it" link. */
+  tech?: string[];
+}
+
+export interface ArchiveItem {
+  title: string;
+  description: string;
+}
+
+export interface Category {
+  title: string;
+  description: string;
+  icon: string;
+  projects: Project[];
+  archive: ArchiveItem[];
+}
+
+export const categories: Category[] = [
   {
     "title": "Ingeniería de Tránsito y Semáforos",
     "description": "Catastro, conteo vehicular, programación de semáforos y procesamiento de informes técnicos.",
@@ -10,7 +35,8 @@ export const categories = [
         "description": "Analiza el flujo vehicular de forma automática: cuenta y clasifica vehículos por tipo, y entrega reportes técnicos listos para tus estudios de tránsito, sin conteo manual en terreno.",
         "highlight": "",
         "image": "/assets/luis/trafficflow.png",
-        "video": "/assets/luis/trafficflow.mp4"
+        "video": "/assets/luis/trafficflow.mp4",
+        "tech": ["js", "postgres", "npm"]
       },
       {
         "id": "project-0-1",
@@ -18,7 +44,8 @@ export const categories = [
         "description": "Digitaliza el levantamiento de catastros IMIV: tu equipo captura en terreno desde una app Android sin depender de Internet, y todo llega organizado a gabinete listo para exportar informes, bitácoras y planos georreferenciados.",
         "highlight": "181 registros y 621 puntos GPS levantados en terreno (proyecto El Milagro)",
         "image": "/assets/luis/icons/portfolio_icons_lriverosc/dark_bg/svg/01_ingenieria_transito_semaforos.svg",
-        "video": ""
+        "video": "",
+        "tech": ["html", "vue", "prettier"]
       },
       {
         "id": "project-0-2",
@@ -26,7 +53,8 @@ export const categories = [
         "description": "Acelera la revisión de informes IMIV: automatiza los conteos de la pauta oficial y genera el consolidado de observaciones en Word y PDF, listo para enviar al revisor.",
         "highlight": "306 requisitos y 404 comprobaciones auditadas automáticamente",
         "image": "/assets/luis/icons/portfolio_icons_lriverosc/dark_bg/svg/01_ingenieria_transito_semaforos.svg",
-        "video": ""
+        "video": "",
+        "tech": ["ts"]
       },
       {
         "id": "project-0-3",
@@ -34,7 +62,8 @@ export const categories = [
         "description": "Limpia y corrige ortomosaicos para tus planos de ingeniería: borra objetos no deseados y ajusta el color y la luminosidad de forma automática, listos para usar en AutoCAD.",
         "highlight": "Detecta bordes y recorta automáticamente las zonas irregulares del mosaico",
         "image": "/assets/luis/icons/portfolio_icons_lriverosc/dark_bg/svg/01_ingenieria_transito_semaforos.svg",
-        "video": ""
+        "video": "",
+        "tech": ["react"]
       }
     ],
     "archive": [
@@ -83,7 +112,8 @@ export const categories = [
         "description": "Descarga y convierte audio y video en un par de clics, con un instalador simple en español — sin instalar nada adicional ni configurar herramientas técnicas.",
         "highlight": "Instalación por usuario, sin administrador, compatible Windows 10/11 x64",
         "image": "/assets/luis/downloader.png",
-        "video": ""
+        "video": "",
+        "tech": ["firebase", "linux", "docker", "vim"]
       }
     ],
     "archive": [
@@ -148,7 +178,8 @@ export const categories = [
         "description": "Mide automáticamente los ciclos de los semáforos en terreno usando la cámara de una tablet, y sincroniza cada proyecto con gabinete para acelerar tus estudios de sintonía semafórica.",
         "highlight": "Precisión validada: 100% de acierto detectando rojo, ámbar y verde sobre 666 muestras reales",
         "image": "/assets/luis/icons/portfolio_icons_lriverosc/dark_bg/svg/04_apps_utilidades.svg",
-        "video": ""
+        "video": "",
+        "tech": ["nextjs", "mongodb", "git", "github"]
       },
       {
         "id": "project-3-1",
@@ -156,7 +187,8 @@ export const categories = [
         "description": "Controla el inventario de herramientas, quién las tiene y cuándo las devuelve, desde el computador o el celular — funciona aunque no haya internet y se sincroniza solo al reconectar.",
         "highlight": "Indicador de sincronización tipo semáforo y diagnóstico con historial de errores",
         "image": "/assets/luis/icons/portfolio_icons_lriverosc/dark_bg/svg/04_apps_utilidades.svg",
-        "video": ""
+        "video": "",
+        "tech": ["css"]
       }
     ],
     "archive": [
@@ -226,3 +258,14 @@ export const categories = [
 export const technologies = ["Python", "PySide6 / PyQt5", "Flutter / Dart", "C# · .NET 8", "WPF / MVVM", "SQLite", "WebSocket", "HTML", "CSS", "JavaScript", "OpenCV", "YOLO", "EfficientDet-Lite0", "CameraX", "MapLibre / OSM", "FFmpeg", "yt-dlp", "Whisper", "Inno Setup", "PyInstaller", "Git", "GitHub", "Windows", "Linux"];
 export const profile = "Soy Ingeniero en Informática y fundador de NeuralCore Software. Desarrollo sistemas locales-first para terreno y gabinete —apps Android en Flutter sincronizadas por WiFi/LAN con aplicaciones de escritorio en PySide6, WPF/.NET y visión por computadora— aplicados a levantamientos IMIV, catastro semafórico, revisión normativa de tránsito y automatización documental. Mis proyectos se validan en campo real: cientos de registros GPS, cientos de fotografías georreferenciadas y exportaciones técnicas (DOCX, PDF, CSV, KMZ) usadas directamente por consultoras de ingeniería.";
 export const services = ["Desarrollo de software a medida", "Automatización de procesos", "Aplicaciones de escritorio", "Procesamiento de datos", "Reportes técnicos", "Herramientas para ingeniería de tránsito", "Integración con Excel y bases de datos", "Prototipos funcionales"];
+
+/** Finds the first project that lists `skillName` (a SKILLS key, see
+ * keyboard.json) in its `tech` array — used to link the 3D keyboard's keycaps
+ * to the project that uses each technology. */
+export function findProjectBySkill(skillName: string): Project | undefined {
+  for (const category of categories) {
+    const match = category.projects.find((project) => project.tech?.includes(skillName));
+    if (match) return match;
+  }
+  return undefined;
+}
