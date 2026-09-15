@@ -23,7 +23,8 @@ export default function HeroSection() {
           <p className="mb-5 text-xs font-medium uppercase tracking-[0.25em] text-primary">NeuralCore · Software / Chile</p>
           <h1 className="font-display text-[clamp(3.5rem,7vw,7rem)] font-bold leading-[1.05] tracking-tight">Luis<br />Riveros</h1>
           <p className="mt-6 min-h-[3.25rem] text-xl font-medium text-foreground sm:min-h-[1.75rem]"><TypewriterText phrases={HERO_TAGLINES} /></p>
-          <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">Construyo software para terreno y gabinete. Apps multiplataforma, automatización con IA y visión por computadora aplicada a ingeniería de tránsito.</p>
+          <p className="mt-3 max-w-lg text-lg font-semibold text-primary">Transformo problemas complejos en software simple.</p>
+          <p className="mt-3 max-w-lg text-base leading-relaxed text-muted-foreground">Desarrollo software a medida para cualquier tipo de proyecto: aplicaciones de escritorio, apps móviles, automatización de procesos y soluciones con inteligencia artificial — desde la idea hasta el producto funcionando.</p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button asChild><Link href="/#projects">Ver proyectos <ArrowUpRight className="ml-2 size-4" /></Link></Button>
             <Button asChild variant="outline"><Link href="/resume"><File className="mr-2 size-4" />Ver CV</Link></Button>
