@@ -260,4 +260,4 @@ section[id] { scroll-margin-top: 6rem; }
   to { transform: rotate(360deg); }
 }
 .ton618-cycle { animation: ton618-cycle 26s ease-in-out infinite; }
-.ton618-spin { animation: ton618-spin 50s linear infinite; }
+.ton618-spin { animation: ton618-spin 14s linear infinite; }
