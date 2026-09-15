@@ -259,5 +259,10 @@ section[id] { scroll-margin-top: 6rem; }
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+@keyframes ton618-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
 .ton618-cycle { animation: ton618-cycle 26s ease-in-out infinite; }
 .ton618-spin { animation: ton618-spin 14s linear infinite; }
+.ton618-spin-reverse { animation: ton618-spin-reverse 20s linear infinite; }

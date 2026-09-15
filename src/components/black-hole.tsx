@@ -19,6 +19,12 @@ import { usePerfProfile } from "@/hooks/use-perf-profile";
  * (`clip-path: ellipse(...)`) never itself rotates — a much larger *circular*
  * conic-gradient underneath spins inside that fixed window, so the plasma
  * visibly swirls without the disk's shape warping as it turns.
+ *
+ * A second, tighter circular ring hugs the sphere directly (counter-spinning,
+ * for parallax) — since it isn't flattened like the main disk, it pokes out
+ * above and below the sphere, approximating the gravitationally-lensed halo
+ * that wraps a real black hole's silhouette top and bottom, not just left
+ * and right.
  */
 export default function BlackHole() {
   const pathname = usePathname();
@@ -61,6 +67,24 @@ export default function BlackHole() {
               }}
             />
           </div>
+        </div>
+        {/* Lensed halo — a true circle (not flattened), so it shows above and
+            below the sphere where the wide disk band is too flat to reach. */}
+        <div
+          className="absolute left-1/2 top-1/2 aspect-square h-[108%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full blur-[0.5px]"
+          style={{
+            WebkitMaskImage: "radial-gradient(circle, transparent 76%, #000 80%, #000 94%, transparent 98%)",
+            maskImage: "radial-gradient(circle, transparent 76%, #000 80%, #000 94%, transparent 98%)",
+            mixBlendMode: "screen",
+          }}
+        >
+          <div
+            className="ton618-spin-reverse h-full w-full"
+            style={{
+              background:
+                "conic-gradient(from 0deg, #fff6e2 0deg, #ffb454 35deg, #ff7a1a 85deg, #b33a00 130deg, #3a1200 180deg, #b33a00 230deg, #ff7a1a 275deg, #ffb454 325deg, #fff6e2 360deg)",
+            }}
+          />
         </div>
         {/* Event horizon — a flat, opaque void so the center reads as a true
             gap in the disk, not a gradient smear. */}
