@@ -164,7 +164,12 @@ export default function BlackHole() {
       aria-hidden
       className="pointer-events-none fixed right-[5%] top-[7%] -z-10 hidden w-[clamp(220px,24vw,340px)] sm:right-[7%] sm:top-[9%] md:block"
     >
-      <div className="ton618-cycle relative overflow-hidden mix-blend-screen">
+      {/* brightness/saturate muted down + a soft blur so it reads as part of
+          the scene, not a bright cutout pasted on top of it. */}
+      <div
+        className="ton618-cycle relative overflow-hidden mix-blend-screen"
+        style={{ filter: "brightness(0.65) saturate(0.7) blur(1.5px)" }}
+      >
         <Image
           src={SOURCE}
           alt="Agujero negro inspirado en TON 618, con un disco de plasma naranja alrededor de su centro oscuro"
