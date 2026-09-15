@@ -7,12 +7,11 @@ import { BlurIn } from "../reveal-animations";
 import { config } from "@/data/config";
 import SectionWrapper from "../ui/section-wrapper";
 import ScrollDownIcon from "../scroll-down-icon";
-import BlackHole from "../black-hole";
 
 export default function HeroSection() {
   return <SectionWrapper id="hero" className="relative min-h-[100svh] w-full">
-    <div className="grid min-h-[100svh] lg:grid-cols-2">
-      <div className="relative z-[2] flex min-w-0 flex-col justify-start px-6 pb-6 pt-28 md:px-12 lg:justify-center lg:pb-24 lg:px-20">
+    <div className="grid min-h-[100svh] md:grid-cols-2">
+      <div className="relative z-[2] flex flex-col justify-start px-6 pb-64 pt-28 md:justify-center md:px-12 md:pb-24 lg:px-20">
         <BlurIn delay={0.3}>
           <p className="mb-5 text-xs font-medium uppercase tracking-[0.25em] text-primary">NeuralCore · Software / Chile</p>
           <h1 className="font-display text-[clamp(3.5rem,7vw,7rem)] font-bold leading-[1.05] tracking-tight">Luis<br />Riveros</h1>
@@ -29,9 +28,6 @@ export default function HeroSection() {
             <Link href="/#contact" className="underline underline-offset-4">Hablemos de tu proyecto</Link>
           </div>
         </BlurIn>
-      </div>
-      <div className="relative z-[2] flex min-w-0 items-center px-3 pb-16 md:px-8 lg:py-24 lg:pl-0 lg:pr-6">
-        <BlackHole />
       </div>
     </div>
     <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"><ScrollDownIcon /></div>

@@ -246,3 +246,14 @@ body > canvas {
 /* Native disclosure controls in the canvas overlay must remain interactive. */
 .canvas-overlay-mode details, .canvas-overlay-mode summary, .canvas-overlay-mode video { pointer-events: auto; }
 section[id] { scroll-margin-top: 6rem; }
+
+/* TON 618 (src/components/black-hole.tsx): mostly invisible, then eases into
+   the starfield in the upper-right background and dissolves back out, on an
+   endless slow loop — 0-70% hidden, 70-85% held visible, 85-100% fading
+   back out. */
+@keyframes ton618-cycle {
+  0%, 70% { opacity: 0; transform: scale(0.85); }
+  78%, 85% { opacity: 1; transform: scale(1); }
+  93%, 100% { opacity: 0; transform: scale(0.88); }
+}
+.ton618-cycle { animation: ton618-cycle 26s ease-in-out infinite; }

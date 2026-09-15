@@ -501,7 +501,7 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     <Suspense fallback={<div>Cargando escena 3D…</div>}>
       <Spline
         wasmPath="/assets/wasm/"
-        className={`w-full h-full fixed ${activeSection === "hero" ? "invisible pointer-events-none" : ""}`}
+        className="w-full h-full fixed"
         ref={splineContainer}
         onLoad={(app: Application) => {
           setSplineApp(app);

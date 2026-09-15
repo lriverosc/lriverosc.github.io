@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { usePerfProfile } from "@/hooks/use-perf-profile";
 
 const SOURCE = "/assets/luis/ton618.png";
@@ -28,8 +29,18 @@ void main() {
   gl_FragColor = vec4(color, 1.0);
 }`;
 
-/** Animate the original texture without rotating or resizing the event horizon. */
+/**
+ * TON 618 — periodically dissolves into view in the upper-right background,
+ * above where the 3D keyboard roams, then fades back into the starfield on
+ * an endless slow loop (`ton618-cycle` in globals.css). The photo's own
+ * warm plasma is animated in place via a WebGL shader (only the luminous
+ * orange areas move — the dark core and the sky stay fixed); a radial CSS
+ * mask fades the rectangular photo edges to transparent so it blends into
+ * the page instead of reading as a boxed-in image.
+ */
 export default function BlackHole() {
+  const pathname = usePathname();
+  const isBlogPost = pathname?.startsWith("/blogs/") && pathname !== "/blogs";
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { ready, disableDecorative, lowEnd, maxDpr } = usePerfProfile();
 
@@ -135,10 +146,30 @@ export default function BlackHole() {
     };
   }, [ready, disableDecorative, lowEnd, maxDpr]);
 
+  if (isBlogPost || disableDecorative) return null;
+
   return (
-    <div className="pointer-events-none relative w-full overflow-hidden dark:mix-blend-screen">
-      <Image src={SOURCE} alt="Agujero negro inspirado en TON 618, con un disco de plasma naranja alrededor de su centro oscuro" width={1440} height={1080} priority sizes="(min-width: 1024px) 50vw, 100vw" className="block h-auto w-full" />
-      <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 h-full w-full opacity-0" />
+    <div
+      aria-hidden
+      className="pointer-events-none fixed right-[5%] top-[7%] -z-10 hidden w-[clamp(220px,24vw,340px)] sm:right-[7%] sm:top-[9%] md:block"
+    >
+      <div
+        className="ton618-cycle relative overflow-hidden dark:mix-blend-screen"
+        style={{
+          maskImage: "radial-gradient(circle at 51% 48%, #000 42%, transparent 72%)",
+          WebkitMaskImage: "radial-gradient(circle at 51% 48%, #000 42%, transparent 72%)",
+        }}
+      >
+        <Image
+          src={SOURCE}
+          alt="Agujero negro inspirado en TON 618, con un disco de plasma naranja alrededor de su centro oscuro"
+          width={1448}
+          height={1086}
+          sizes="340px"
+          className="block h-auto w-full"
+        />
+        <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 h-full w-full opacity-0" />
+      </div>
     </div>
   );
 }
