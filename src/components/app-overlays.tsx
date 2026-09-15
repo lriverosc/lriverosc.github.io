@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Particles from "@/components/Particles";
-import BlackHole from "@/components/black-hole";
 import RemoteCursors from "@/components/realtime/remote-cursors";
 import EasterEggs from "@/components/easter-eggs";
 import ElasticCursor from "@/components/ui/ElasticCursor";
@@ -29,7 +28,6 @@ export default function AppOverlays() {
           maxDpr={maxDpr}
         />
       )}
-      {isHome && <BlackHole />}
       {isHome && <RemoteCursors />}
       <EasterEggs />
       {!isResume && !disableDecorative && <ElasticCursor />}
