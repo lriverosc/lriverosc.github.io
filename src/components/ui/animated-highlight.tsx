@@ -1,28 +1,30 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "motion/react";
+import { animate, useInView } from "motion/react";
 import { usePerfProfile } from "@/hooks/use-perf-profile";
 
 function CountUpNumber({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
+  // amount: 0.8 — trigger as soon as most of the number is on screen, rather
+  // than waiting for the whole line (which can sit just past the fold and
+  // never look like it "started").
+  const isInView = useInView(ref, { once: true, amount: 0.8 });
   const { disableDecorative } = usePerfProfile();
-  const [display, setDisplay] = useState(disableDecorative ? value : 0);
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!isInView || disableDecorative) return;
-    const duration = 1200;
-    const start = performance.now();
-    let frame: number;
-    const tick = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * value));
-      if (progress < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    if (!isInView) return;
+    if (disableDecorative) {
+      setDisplay(value);
+      return;
+    }
+    const controls = animate(0, value, {
+      duration: 1.4,
+      ease: "easeOut",
+      onUpdate: (latest) => setDisplay(Math.round(latest)),
+    });
+    return () => controls.stop();
   }, [isInView, disableDecorative, value]);
 
   return <span ref={ref}>{display}</span>;
