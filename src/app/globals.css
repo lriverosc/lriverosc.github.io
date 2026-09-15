@@ -247,14 +247,28 @@ body > canvas {
 .canvas-overlay-mode details, .canvas-overlay-mode summary, .canvas-overlay-mode video { pointer-events: auto; }
 section[id] { scroll-margin-top: 6rem; }
 
-/* TON 618 (src/components/black-hole.tsx): mostly invisible, then eases into
-   the starfield in the upper-right background and dissolves back out, on an
-   endless slow loop — 0-70% hidden, 70-85% held visible, 85-100% fading
-   back out. Peak opacity stays well under 1 — a dim, muted presence rather
-   than a bright standout accent. */
-@keyframes ton618-cycle {
-  0%, 70% { opacity: 0; transform: scale(0.85); }
-  78%, 85% { opacity: 0.55; transform: scale(1); }
-  93%, 100% { opacity: 0; transform: scale(0.88); }
+/* TON 618 ASCII art (src/components/black-hole.tsx): resolves slowly out of
+   the dark background, holds fully visible, dissolves back — one ~20s cycle,
+   repeating forever. The caption ("TON 618" + distance) runs its own
+   shorter, later window within the same cycle length so it appears just
+   after the art has come into focus and fades out just before the art does
+   (see ton618-text-cycle below), rather than both moving in perfect lockstep.
+   `prefers-reduced-motion` is handled by the sitewide rule further up this
+   file (animation-duration ~0, 1 iteration, no fill-mode) — that collapses
+   both to their resting, fully-visible, unblurred state instead of hiding
+   them, since this is inert CSS with nothing to gate in JS. */
+@keyframes ton618-ascii-cycle {
+  0% { opacity: 0; filter: blur(10px); transform: scale(0.955); }
+  20% { opacity: 0.12; filter: blur(9px); transform: scale(0.965); }
+  40% { opacity: 0.6; filter: blur(3px); transform: scale(0.985); }
+  55%, 75% { opacity: 1; filter: blur(0); transform: scale(1); }
+  90% { opacity: 0.35; filter: blur(6px); transform: scale(0.975); }
+  100% { opacity: 0; filter: blur(10px); transform: scale(0.955); }
 }
-.ton618-cycle { animation: ton618-cycle 26s ease-in-out infinite; }
+@keyframes ton618-text-cycle {
+  0%, 45% { opacity: 0; }
+  58%, 72% { opacity: 1; }
+  80%, 100% { opacity: 0; }
+}
+.ton618-ascii-cycle { animation: ton618-ascii-cycle 20s ease-in-out infinite; }
+.ton618-text-cycle { animation: ton618-text-cycle 20s ease-in-out infinite; }
