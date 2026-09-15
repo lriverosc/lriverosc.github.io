@@ -4,11 +4,16 @@ import { usePathname } from "next/navigation";
 import { usePerfProfile } from "@/hooks/use-perf-profile";
 
 /**
- * TON 618 — the most massive black hole known — periodically dissolves into
- * the starfield background at screen center, then fades back out into it, on
- * an endless slow loop (see the `ton618-*` keyframes in globals.css). Pure
- * CSS opacity/transform, so it's effectively free to keep running; skipped
+ * TON 618 — the most massive black hole known — periodically resolves into
+ * view above the horizon on the upper right, holds for a moment with a
+ * sharply-defined event horizon (Gargantua-style, from Interstellar), then
+ * dissolves back into the starfield. Endless slow loop, pure CSS
+ * opacity/transform (see the `ton618-*` keyframes in globals.css), skipped
  * under reduced motion like every other purely decorative effect here.
+ *
+ * Deliberately kept away from center: the 3D keyboard scene (an opaque WebGL
+ * canvas) roams through the middle of the screen across sections and would
+ * otherwise paint right over it.
  */
 export default function BlackHole() {
   const pathname = usePathname();
@@ -18,24 +23,33 @@ export default function BlackHole() {
   if (isBlogPost || disableDecorative) return null;
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 flex items-center justify-center">
-      <div className="ton618-cycle relative aspect-square w-[clamp(220px,32vw,420px)]">
-        {/* Accretion disk glow — screen-blended so it melts into the black
-            background instead of sitting on top of it as a hard-edged shape. */}
+    <div
+      aria-hidden
+      className="pointer-events-none fixed right-[6%] top-[10%] -z-10 hidden sm:right-[9%] sm:top-[12%] md:block"
+    >
+      <div className="ton618-cycle relative aspect-square w-[clamp(160px,18vw,260px)]">
+        {/* Ambient glow — soft and screen-blended so it melts into the sky. */}
         <div
-          className="ton618-spin absolute inset-0 rounded-full blur-2xl"
+          className="absolute inset-[-40%] rounded-full blur-3xl"
           style={{
-            background:
-              "radial-gradient(circle, transparent 26%, rgba(255,158,66,0.4) 30%, rgba(255,94,0,0.18) 46%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(255,196,120,0.35), transparent 65%)",
             mixBlendMode: "screen",
           }}
         />
-        {/* Event horizon — solid dark core so the center reads as a void, not
-            just a glowing ring. */}
+        {/* Photon ring — bright and sharp-edged, the "well-defined event
+            horizon" look, slowly swirling like an accretion disk. */}
         <div
-          className="absolute inset-[8%] rounded-full"
-          style={{ background: "radial-gradient(circle, #000 0%, #000 60%, transparent 100%)" }}
+          className="ton618-spin absolute inset-0 rounded-full"
+          style={{
+            background:
+              "conic-gradient(from 0deg, rgba(255,238,210,0.95), rgba(255,175,90,0.75) 25%, rgba(255,238,210,0.95) 50%, rgba(255,150,60,0.6) 75%, rgba(255,238,210,0.95) 100%)",
+            WebkitMaskImage: "radial-gradient(circle, transparent 39%, #000 41%, #000 50%, transparent 52%)",
+            maskImage: "radial-gradient(circle, transparent 39%, #000 41%, #000 50%, transparent 52%)",
+          }}
         />
+        {/* Event horizon — a flat, opaque void with a hard edge against the
+            ring, not a soft gradient smear. */}
+        <div className="absolute inset-[9%] rounded-full bg-black" />
         <p className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.3em] text-white/40">
           TON 618
         </p>
