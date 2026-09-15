@@ -6,17 +6,22 @@ import { usePathname } from "next/navigation";
 import { usePerfProfile } from "@/hooks/use-perf-profile";
 
 const SOURCE = "/assets/luis/ton618.png";
+// Source is a pre-cut transparent PNG (no black background) — aspect ratio
+// and the black hole's center within the frame, measured from the actual
+// file (see the alpha-weighted centroid / dark-core bbox analysis).
+const ASPECT = 1536 / 1024;
 const FRAGMENT = `
 precision mediump float;
 uniform sampler2D picture;
 uniform float time;
 varying vec2 uv;
 void main() {
-  vec3 original = texture2D(picture, uv).rgb;
-  vec2 radial = (uv - vec2(0.51, 0.48)) * vec2(1.333333, 1.0);
+  vec4 original = texture2D(picture, uv);
+  vec2 radial = (uv - vec2(0.53, 0.46)) * vec2(${ASPECT.toFixed(6)}, 1.0);
   float radius = length(radial);
   float angle = atan(radial.y, radial.x);
-  // Only the warm, luminous plasma moves. The dark core and sky stay fixed.
+  // Only the warm, luminous plasma moves. The dark core and transparent
+  // background stay fixed.
   float plasma = smoothstep(0.12, 0.65, original.r)
     * smoothstep(0.025, 0.18, original.r - original.b);
   float flow = sin(angle * 19.0 + radius * 85.0 - time * 1.7)
@@ -24,19 +29,22 @@ void main() {
   vec2 tangent = vec2(-radial.y, radial.x) / max(radius, 0.01);
   vec2 offset = (tangent * flow + normalize(radial + vec2(0.0001))
     * sin(angle * 27.0 + time * 2.0)) * 0.0028 * plasma;
-  vec3 color = texture2D(picture, uv + offset).rgb;
-  color *= 1.0 + 0.055 * plasma * sin(angle * 13.0 - time * 2.2 + radius * 60.0);
-  gl_FragColor = vec4(color, 1.0);
+  vec4 sampled = texture2D(picture, uv + offset);
+  vec3 color = sampled.rgb * (1.0 + 0.055 * plasma * sin(angle * 13.0 - time * 2.2 + radius * 60.0));
+  // Premultiply by the sampled alpha: the canvas context below is created
+  // with premultipliedAlpha (WebGL's default), so this is what keeps the
+  // image's real transparent background transparent in the rendered canvas
+  // instead of compositing as an opaque black rectangle.
+  gl_FragColor = vec4(color * sampled.a, sampled.a);
 }`;
 
 /**
  * TON 618 — periodically dissolves into view in the upper-right background,
  * above where the 3D keyboard roams, then fades back into the starfield on
- * an endless slow loop (`ton618-cycle` in globals.css). The photo's own
- * warm plasma is animated in place via a WebGL shader (only the luminous
- * orange areas move — the dark core and the sky stay fixed); a radial CSS
- * mask fades the rectangular photo edges to transparent so it blends into
- * the page instead of reading as a boxed-in image.
+ * an endless slow loop (`ton618-cycle` in globals.css). The source photo is
+ * already a transparent cutout (no background to mask away); a WebGL shader
+ * animates only the luminous orange plasma in place, keeping the dark core
+ * and the transparent background fixed.
  */
 export default function BlackHole() {
   const pathname = usePathname();
@@ -47,7 +55,7 @@ export default function BlackHole() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !ready || disableDecorative || lowEnd) return;
-    const gl = canvas.getContext("webgl", { alpha: false, antialias: false });
+    const gl = canvas.getContext("webgl", { alpha: true, antialias: false, premultipliedAlpha: true });
     if (!gl) return;
     const shaders: WebGLShader[] = [];
     const shader = (type: number, source: string) => {
@@ -74,6 +82,8 @@ export default function BlackHole() {
       return;
     }
     gl.useProgram(program);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
@@ -95,6 +105,7 @@ export default function BlackHole() {
     const draw = (now: number) => {
       elapsed += previous ? Math.min(now - previous, 50) / 1000 : 0;
       previous = now;
+      gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform1f(time, elapsed);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       canvas.style.opacity = "1";
@@ -153,26 +164,12 @@ export default function BlackHole() {
       aria-hidden
       className="pointer-events-none fixed right-[5%] top-[7%] -z-10 hidden w-[clamp(220px,24vw,340px)] sm:right-[7%] sm:top-[9%] md:block"
     >
-      {/* The photo masks itself by luminance: its own black background (and
-          the black hole's core) are near-zero brightness, so they turn fully
-          transparent automatically — only the bright plasma stays visible.
-          Much more reliable than guessing a radial-gradient cutout radius. */}
-      <div
-        className="ton618-cycle relative overflow-hidden mix-blend-screen"
-        style={{
-          maskImage: `url(${SOURCE})`,
-          WebkitMaskImage: `url(${SOURCE})`,
-          maskSize: "cover",
-          WebkitMaskSize: "cover",
-          maskRepeat: "no-repeat",
-          WebkitMaskRepeat: "no-repeat",
-        }}
-      >
+      <div className="ton618-cycle relative overflow-hidden mix-blend-screen">
         <Image
           src={SOURCE}
           alt="Agujero negro inspirado en TON 618, con un disco de plasma naranja alrededor de su centro oscuro"
-          width={1448}
-          height={1086}
+          width={1536}
+          height={1024}
           sizes="340px"
           className="block h-auto w-full"
         />
