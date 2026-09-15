@@ -14,7 +14,7 @@ export default function ExperienceSection() {
         <div><p className="mb-3 text-sm uppercase tracking-widest text-primary">Ingeniería + software + IA</p><p className="leading-relaxed text-muted-foreground">{profile}</p></div>
       </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
-        {[['181', 'registros de catastro en El Milagro'], ['621', 'puntos GPS levantados en terreno'], ['404', 'comprobaciones automatizadas en Revisor IMIV']].map(([number, label]) => <div key={number} className="rounded-2xl border border-border bg-background/90 p-6"><p className="font-display text-4xl font-bold"><AnimatedHighlight text={number} /></p><p className="mt-2 text-sm text-muted-foreground">{label}</p></div>)}
+        {[['181', 'registros de catastro en El Milagro'], ['621', 'puntos GPS levantados en terreno'], ['404', 'comprobaciones automatizadas en Revisor IMIV']].map(([number, label]) => <div key={number} className="rounded-2xl border border-border bg-background/90 p-6"><p className="font-display text-4xl font-bold"><AnimatedHighlight text={number} loop /></p><p className="mt-2 text-sm text-muted-foreground">{label}</p></div>)}
       </div>
     </SectionWrapper>
     <SectionWrapper id="services" className="mx-auto max-w-6xl px-6 py-24">
