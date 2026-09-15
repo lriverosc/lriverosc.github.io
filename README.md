@@ -4,7 +4,22 @@ A jaw-dropping developer portfolio packed with interactive 3D animations, butter
 
 > **Free to use!** This portfolio is open source. If you use it, a credit/link back would be really appreciated 🙏
 
+---
 
+## 🇨🇱 Sobre este fork
+
+Este es el portafolio personal de **Luis Riveros** (Ingeniero en Informática, fundador de NeuralCore Software), basado en esta plantilla. Personalizaciones sobre la base original:
+
+- **Datos reales**: perfil, proyectos, tecnologías y experiencia en [`src/data/`](src/data) reemplazan el contenido de ejemplo de la plantilla.
+- **Teclado 3D → proyectos**: cada tecla está mapeada a un proyecto real (campo `tech` en [`src/data/portfolio.ts`](src/data/portfolio.ts) + [`src/lib/skill-navigation.ts`](src/lib/skill-navigation.ts)). Al hacer clic sobre una tecla, la página hace scroll hasta el proyecto que usa esa tecnología y abre su detalle — antes solo mostraba el nombre al pasar el mouse.
+- **Estadísticas animadas**: los números de "Sobre mí" y los highlights de cada proyecto cuentan desde 0 al entrar en pantalla ([`src/components/ui/animated-highlight.tsx`](src/components/ui/animated-highlight.tsx)); los de "Sobre mí" se repiten cada vez que vuelven a la vista.
+- **Tagline animada** en el Hero (efecto typewriter, [`src/components/ui/typewriter-text.tsx`](src/components/ui/typewriter-text.tsx)) y una presentación general (no acotada a un solo rubro) con un eslogan propio.
+- **TON 618**: easter egg en el fondo espacial — un agujero negro estilizado (estilo Gargantua) que se funde con el fondo cada cierto tiempo en la esquina superior derecha ([`src/components/black-hole.tsx`](src/components/black-hole.tsx)).
+- **Contacto**: el mensaje invita a colaborar en los proyectos y aportar mejoras, no a ofrecer u ofrecerse para un puesto de trabajo.
+
+Todas estas piezas respetan `prefers-reduced-motion` igual que el resto del sitio (ver [`src/hooks/use-perf-profile.tsx`](src/hooks/use-perf-profile.tsx)).
+
+---
 
 ## ✨ Features
 
