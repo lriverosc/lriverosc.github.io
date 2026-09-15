@@ -153,11 +153,19 @@ export default function BlackHole() {
       aria-hidden
       className="pointer-events-none fixed right-[5%] top-[7%] -z-10 hidden w-[clamp(220px,24vw,340px)] sm:right-[7%] sm:top-[9%] md:block"
     >
+      {/* The photo masks itself by luminance: its own black background (and
+          the black hole's core) are near-zero brightness, so they turn fully
+          transparent automatically — only the bright plasma stays visible.
+          Much more reliable than guessing a radial-gradient cutout radius. */}
       <div
-        className="ton618-cycle relative overflow-hidden dark:mix-blend-screen"
+        className="ton618-cycle relative overflow-hidden mix-blend-screen"
         style={{
-          maskImage: "radial-gradient(circle at 51% 48%, #000 42%, transparent 72%)",
-          WebkitMaskImage: "radial-gradient(circle at 51% 48%, #000 42%, transparent 72%)",
+          maskImage: `url(${SOURCE})`,
+          WebkitMaskImage: `url(${SOURCE})`,
+          maskSize: "cover",
+          WebkitMaskSize: "cover",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
         }}
       >
         <Image
